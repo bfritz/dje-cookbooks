@@ -1,0 +1,9 @@
+Bluepill.application("pdns-provider") do |app|
+  app.process("unicorn") do |process|
+    process.pid_file = "/var/run/unicorn/pdns-provider.pid"
+
+    process.start_command = "unicorn --daemonize --env production " +
+      "--config-file <%= @unicorn_config %> <%= @rack_config %>"
+    process.stop_command = "kill -QUIT {{PID}}"
+  end
+end

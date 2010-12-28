@@ -1,0 +1,7 @@
+---
+db: <%= @db %>
+nameservers: 
+<% @nameservers.each do |nameserver| %>
+- <%= nameserver %>
+<% end %>
+shared_secret: <%= @secret %>

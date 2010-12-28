@@ -1,0 +1,4 @@
+require "dnsimple-pdns-provider"
+
+ENV["pdns.config"] = "<%= @config %>"
+run DNSimple::Pdns::API
