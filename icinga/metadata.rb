@@ -5,5 +5,10 @@ description      "Installs/Configures icinga"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
+depends "apache2"
+
 supports "ubuntu"
+supports "debian"
 supports "centos"
+supports "redhat"
+supports "fedora"

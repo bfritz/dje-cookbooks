@@ -9,11 +9,23 @@
     "ubuntu": [
 
     ],
+    "debian": [
+
+    ],
     "centos": [
+
+    ],
+    "redhat": [
+
+    ],
+    "fedora": [
 
     ]
   },
   "dependencies": {
+    "apache2": [
+
+    ]
   },
   "recommendations": {
   },
