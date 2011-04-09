@@ -1,3 +1,5 @@
 default[:icinga][:version] = "1.3.0"
 default[:icinga][:checksum] = "eec3b6ff"
 default[:icinga][:email] = "nobody@example.com"
+default[:icinga][:web][:version] = "1.3.0"
+default[:icinga][:web][:checksum] = "7f3d0417"

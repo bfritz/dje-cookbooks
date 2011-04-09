@@ -1,0 +1,22 @@
+#
+# icinga-web apache configuration
+# - Enable all options .htaccess
+# - Add extjs library to alias
+#
+
+Alias /icinga-web/js/ext3 /usr/local/icinga-web/lib/ext3
+Alias /icinga-web /usr/local/icinga-web/pub
+
+<Directory /usr/local/icinga-web/lib/ext3>
+	Order allow,deny
+	Allow from all
+</Directory>
+
+<Directory /usr/local/icinga-web/pub>
+	DirectoryIndex index.php
+	Options FollowSymLinks
+	AllowOverride all
+	Order allow,deny
+	Allow from all
+</Directory>
+

@@ -7,8 +7,8 @@ version          "0.0.1"
 
 depends "apache2"
 
-supports "ubuntu"
-supports "debian"
-supports "centos"
-supports "redhat"
-supports "fedora"
+%w( ubuntu debian
+    centos redhat fedora ).each do |os|
+  supports os
+end
+

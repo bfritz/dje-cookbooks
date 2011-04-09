@@ -6,26 +6,14 @@
   "maintainer_email": "darrin@heavywater.ca",
   "license": "Apache 2.0",
   "platforms": {
-    "ubuntu": [
-
-    ],
-    "debian": [
-
-    ],
-    "centos": [
-
-    ],
-    "redhat": [
-
-    ],
-    "fedora": [
-
-    ]
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "redhat": ">= 0.0.0",
+    "fedora": ">= 0.0.0"
   },
   "dependencies": {
-    "apache2": [
-
-    ]
+    "apache2": ">= 0.0.0"
   },
   "recommendations": {
   },
