@@ -10,7 +10,8 @@ when "ubuntu", "debian"
   package "php5-ldap"
   package "php5-mysql"
 when "redhat", "centos", "fedora"
-  include_recipe "icinga::php-yum"
+  include_recipe "icinga::web-db"
+  include_recipe "icinga::php-yum2"
 end
 
 include_recipe "apache2"
@@ -48,7 +49,10 @@ template "#{node[:apache][:dir]}/conf.d/icinga-web.conf" do
   notifies :restart, "service[apache2]"
 end
 
-directory "/usr/local/icinga-web/app/cache" do
-  owner "apache"
-  group "apache"
+case node[:platform]
+when "redhat", "centos", "fedora"
+  directory "/usr/local/icinga-web/app/cache/config" do
+    owner "apache"
+    group "apache"
+  end
 end

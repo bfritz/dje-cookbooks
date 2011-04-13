@@ -1,19 +1,12 @@
-execute "install key" do
-  command "rpm --import http://www.jasonlitka.com/media/RPM-GPG-KEY-jlitka"
-  action :nothing
-end
-
-template "/etc/yum.repos.d/utterramblings.repo" do
-  notifies :run, "execute[install key]", :immediately
-end
+include_recipe "icinga::utterramblings"
 
 %w( php
     php-cli
     php-xmlrpc
+    php-xml
     php-pdo
     php-gd
-    php-ldap
-    php-mysql ).each do |p|
+    php-ldap ).each do |p|
   execute "install #{p}" do
     command "yum -y install #{p}"
     not_if "yum list installed #{p} | grep 5.2.16"
@@ -30,3 +23,26 @@ execute "upgrade pcre" do
   not_if "yum list installed pcre | grep 8.02"
 end
 
+=begin
+
+cookbook_file "/usr/lib64/mysql/libmysqlclient.so.16.0.0" do
+  mode "755"
+end
+
+link "/usr/lib64/mysql/libmysqlclient.so.16" do
+  to "/usr/lib64/mysql/libmysqlclient.so.16.0.0"
+end
+
+rpm = "php-mysql-5.2.16-jason.1.x86_64.rpm"
+
+remote_file "/usr/src/#{rpm}" do
+  source "http://www.jasonlitka.com/media/EL5/x86_64/#{rpm}"
+  checksum "453dbbbe"
+end
+
+execute "install php-mysql" do
+  command "rpm --nodeps --install #{rpm}"
+  creates "/usr/lib64/php/modules/pdo_mysql.so"
+end
+
+=end

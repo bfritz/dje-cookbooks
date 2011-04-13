@@ -6,6 +6,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
 depends "apache2"
+depends "mysql"
 
 %w( ubuntu debian
     centos redhat fedora ).each do |os|
