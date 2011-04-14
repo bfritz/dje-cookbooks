@@ -11,7 +11,7 @@ when "ubuntu", "debian"
   package "php5-mysql"
 when "redhat", "centos", "fedora"
   include_recipe "icinga::web-db"
-  include_recipe "icinga::php-yum2"
+  include_recipe "icinga::php-yum"
 end
 
 include_recipe "apache2"

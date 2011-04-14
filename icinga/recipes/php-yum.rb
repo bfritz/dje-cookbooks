@@ -1,48 +1,28 @@
-include_recipe "icinga::utterramblings"
+# http://www.if-not-true-then-false.com/2010/install-apache-php-on-fedora-centos-red-hat-rhel/
 
-%w( php
-    php-cli
-    php-xmlrpc
+execute "add remi repository" do
+  command "rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-5.rpm"
+  creates "/etc/yum.repos.d/remi.repo"
+end
+
+execute "install php" do
+  command "yum --enablerepo=remi install -y httpd php php-common"
+  not_if "php --version | grep 5.3"
+end
+
+%w( php-xmlrpc
     php-xml
     php-pdo
     php-gd
-    php-ldap ).each do |p|
+    php-ldap
+    php-mysql ).each do |p|
   execute "install #{p}" do
-    command "yum -y install #{p}"
-    not_if "yum list installed #{p} | grep 5.2.16"
+    command "yum --enablerepo=remi install -y #{p}"
+    not_if "yum --enablerepo=remi list installed #{p} | grep 5.3"
   end
 end
 
 execute "install php-pear" do
-  command "yum -y install php-pear"
-  not_if "yum list installed php-pear | grep 1.9.1"
+  command "yum --enablerepo=remi install -y php-pear"
+  not_if "yum --enablerepo=remi list installed php-pear | grep 1.9"  
 end
-
-execute "upgrade pcre" do
-  command "yum -y upgrade pcre"
-  not_if "yum list installed pcre | grep 8.02"
-end
-
-=begin
-
-cookbook_file "/usr/lib64/mysql/libmysqlclient.so.16.0.0" do
-  mode "755"
-end
-
-link "/usr/lib64/mysql/libmysqlclient.so.16" do
-  to "/usr/lib64/mysql/libmysqlclient.so.16.0.0"
-end
-
-rpm = "php-mysql-5.2.16-jason.1.x86_64.rpm"
-
-remote_file "/usr/src/#{rpm}" do
-  source "http://www.jasonlitka.com/media/EL5/x86_64/#{rpm}"
-  checksum "453dbbbe"
-end
-
-execute "install php-mysql" do
-  command "rpm --nodeps --install #{rpm}"
-  creates "/usr/lib64/php/modules/pdo_mysql.so"
-end
-
-=end
