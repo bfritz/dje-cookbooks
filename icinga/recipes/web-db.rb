@@ -1,5 +1,6 @@
 include_recipe "mysql::server"
 
+=begin
 mysql_database "create icinga-web database" do
   host "localhost"
   username "root"
@@ -7,3 +8,4 @@ mysql_database "create icinga-web database" do
   database "icinga_web"
   action :create_db
 end
+=end

@@ -1,11 +1,11 @@
 include_recipe "icinga::source"
+include_recipe "icinga::web-db"
 
 case node[:platform]
 when "ubuntu", "debian"
   include_recipe "php"
   package "php5-xmlrpc"
   package "php5-xsl"
-  package "php5-pdo"
   package "php5-gd"
   package "php5-ldap"
   package "php5-mysql"

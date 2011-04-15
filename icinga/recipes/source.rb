@@ -27,12 +27,10 @@ end
 case node[:platform]
 when "ubuntu", "debian"
   package "libgd2-xpm-dev"
-  package "libjpeg62"
   package "libjpeg62-dev"
-  package "libpng12"
   package "libpng12-dev"
   package "snmp"
-  package "libsnmp5-dev"
+  package "libsnmp-dev"
 when "redhat", "centos", "fedora"
   package "gd"
   package "gd-devel"
