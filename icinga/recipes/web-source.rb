@@ -1,5 +1,5 @@
-include_recipe "icinga::source"
 include_recipe "icinga::web-db"
+include_recipe "icinga::source"
 
 case node[:platform]
 when "ubuntu", "debian"

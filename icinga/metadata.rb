@@ -7,7 +7,7 @@ version          "0.0.1"
 
 depends "php"
 depends "apache2"
-depends "mysql"
+depends "percona"
 
 %w( ubuntu debian
     centos redhat fedora ).each do |os|
