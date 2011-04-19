@@ -1,0 +1,21 @@
+= DESCRIPTION:
+
+Installs Emacs Starter Kit
+
+https://github.com/technomancy/emacs-starter-kit
+
+= REQUIREMENTS:
+
+== Platform:
+
+Tested on Ubuntu 10.04, but should work on most Debian and Red Hat derivatives.
+
+== Cookbooks:
+
+Depends on users, git and emacs.
+
+= ATTRIBUTES:
+
+= USAGE:
+
+Any user data bag item with an attribute for "editor" set to "emacs" will have this recipe applied.
