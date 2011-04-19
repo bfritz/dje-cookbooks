@@ -28,6 +28,6 @@ search( :users, "editor:emacs" ).each do |u|
     reference "master"
     user user_id
     group user_id
-    action :sync
+    action :checkout
   end
 end
