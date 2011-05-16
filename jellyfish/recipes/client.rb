@@ -13,15 +13,16 @@ template "/etc/jellyfish.yml" do
   variables( :id => node[:jellyfish][:id],
              :endpoint => node[:jellyfish][:endpoint],
              :command => node[:jellyfish][:command] )
+  notifies :restart, "service[jellyfish]"
 end
 
-template "/etc/init/jellyfish-client.conf" do
-  source "jellyfish-upstart.erb"
-  notifies :restart, "service[jellyfish-client]"
+file "/usr/src/jellyfish/jellyfish-client.py" do
+  mode "755"
 end
 
-service "jellyfish-client" do
-  provider Chef::Provider::Service::Upstart
-  supports :status => true, :restart => true, :reload => true
-  action [ :enable, :start ]
+service "jellyfish" do
+  start_command "/usr/src/jellyfish/jellyfish-client.py"
+  stop_command "pkill -f jellyfish-client"
+  status_command "pgrep -f jellyfish-client"
+  action [:start]
 end
