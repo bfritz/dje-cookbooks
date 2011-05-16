@@ -12,6 +12,6 @@ execute "compile misultin" do
   creates "/usr/src/misultin/ebin"
 end
 
-link "/usr/lib/erlang/lib/misultin-0.7.1" do
+link "/usr/local/lib/erlang/lib/misultin-0.7.1" do
   to "/usr/src/misultin"
 end
