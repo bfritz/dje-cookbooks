@@ -1,11 +1,11 @@
 include_recipe "python"
 
-python_pip "websocket-client" do
-  action :install
-end
-
-python_pip "PyYAML" do
-  action :install
+%w( websocket-client
+    PyYAML
+    python-daemon ).each do |p|
+  python_pip p do
+    action :install
+  end
 end
 
 template "/etc/jellyfish.yml" do
