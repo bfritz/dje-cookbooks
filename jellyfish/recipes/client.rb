@@ -1,3 +1,4 @@
+include_recipe "jellyfish::source"
 include_recipe "python"
 
 %w( websocket-client

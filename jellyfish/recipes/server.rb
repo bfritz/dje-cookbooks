@@ -1,3 +1,4 @@
+include_recipe "jellyfish::source"
 include_recipe "jellyfish::erlang"
 
 git "/usr/src/misultin" do

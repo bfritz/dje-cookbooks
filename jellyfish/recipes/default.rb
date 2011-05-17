@@ -17,10 +17,4 @@
 # limitations under the License.
 #
 
-git "/usr/src/jellyfish" do
-  repository "https://github.com/dje/jellyfish.git"
-  reference "master"
-  action :sync
-end
-
 include_recipe "jellyfish::client"
